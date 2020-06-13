@@ -7,6 +7,20 @@ MercadoPago\SDK::setAccessToken("APP_USR-6317427424180639-042414-47e969706991d3a
 // Crea un objeto de preferencia
 $preference = new MercadoPago\Preference();
 
+//payment_methods
+$payment_methods = new MercadoPago\Payment_methods();
+$payment_methods->excluded_payment_methods = array("id"=>"amex");
+$payment_methods->excluded_payment_types = array("id"=>"atm");
+$payment_methods->installments=6;
+$preference->payment_methods = $payment_methods;
+
+//backs_url
+$preference->back_urls = array(
+    "success" => "https://btisocco-mp-commerce-php.herokuapp.com/success.php",
+    "failure" => "https://btisocco-mp-commerce-php.herokuapp.com/failure.php",
+    "pending" => "https://btisocco-mp-commerce-php.herokuapp.com/pending.php"
+);
+
 // Crea un ítem en la preferencia
 $item = new MercadoPago\Item();
 $item->title = 'Mi producto';
@@ -152,8 +166,8 @@ $preference->save();
                                     <script
                                         src="https://www.mercadopago.com.ar/integrations/v1/web-payment-checkout.js"
                                         data-preference-id="<?php echo $preference->id; ?>">
-                                        </script>
-                                    <button type="submit" class="mercadopago-button" formmethod="post">Pagar</button>
+                                    </script>
+                                    <!-- <button type="submit" class="mercadopago-button" formmethod="post">Pagar</button> -->
                                 </div>
                             </div>
                         </div>
