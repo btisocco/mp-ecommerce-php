@@ -16,17 +16,17 @@ $preference = new MercadoPago\Preference();
 // $preference->payment_methods = $payment_methods;
 
 //backs_url
-$preference->back_urls = array(
-    "success" => "https://btisocco-mp-commerce-php.herokuapp.com/success.php",
-    "failure" => "https://btisocco-mp-commerce-php.herokuapp.com/failure.php",
-    "pending" => "https://btisocco-mp-commerce-php.herokuapp.com/pending.php"
-);
+// $preference->back_urls = array(
+//     "success" => "https://btisocco-mp-commerce-php.herokuapp.com/success.php",
+//     "failure" => "https://btisocco-mp-commerce-php.herokuapp.com/failure.php",
+//     "pending" => "https://btisocco-mp-commerce-php.herokuapp.com/pending.php"
+// );
 
 // Crea un ítem en la preferencia
 $item = new MercadoPago\Item();
-$item->title = 'Motorola S6 Plus';
+$item->title = 'Mi producto';
 $item->quantity = 1;
-$item->unit_price = 50000;
+$item->unit_price = 75.56;
 $preference->items = array($item);
 $preference->save();
 
