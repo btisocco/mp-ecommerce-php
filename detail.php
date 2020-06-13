@@ -23,9 +23,8 @@ $preference_data = array(
         )
         ),
     "payment_methods" => array( /*aqui excluyo tipos de pago rapipago, transf bancaria, atm*/
-            "excluded_payment_methods" => array( array( "id"=>"amex"),
-            "excluded_payment_types" => array( array("id"=>"atm")
-            )		
+            "excluded_payment_types" => array( array( "id"=>"amex"), array("id"=>"bank_transfer"), array("id"=>"atm")	)		
+                                        
         )
 );
 
