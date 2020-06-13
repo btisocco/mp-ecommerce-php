@@ -8,7 +8,7 @@ MercadoPago\SDK::setAccessToken("APP_USR-6317427424180639-042414-47e969706991d3a
 MercadoPago\SDK::setIntegratorId("dev_24c65fb163bf11ea96500242ac130004");
 
 $preference_data = array(
-    "external_reference" => 'btisocco@gmail.com',
+    "external_reference" => $transaction_id,
     "back_urls"=> array (
         "success"=> 'https://btisocco-mp-commerce-php.herokuapp.com/success',
         "failure"=> 'https://btisocco-mp-commerce-php.herokuapp.com/failure',
@@ -19,11 +19,11 @@ $preference_data = array(
             "title" =>'Producto1',
             "quantity" => 1,
             "currency_id" => "ARS",
-            "unit_price" => "15000"
+            "unit_price" => "(float) round($precio,2) "
         )
         ),
     "payment_methods" => array( /*aqui excluyo tipos de pago rapipago, transf bancaria, atm*/
-            "excluded_payment_types" => array( array( "id"=>"amex"), array("id"=>"bank_transfer"), array("id"=>"atm")	)		
+            "excluded_payment_types" => array( array( "id"=>"ticket"), array("id"=>"bank_transfer"), array("id"=>"atm")	)		
                                         
         )
 );
