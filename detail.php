@@ -21,9 +21,9 @@ $preference->payment_methods = array(
 
 //backs_url
 $preference->back_urls = array(
-    "success" => "https://estudiomascreativo.com",
-    "failure" => "https://btisocco-mp-commerce-php.herokuapp.com/failure.php",
-    "pending" => "https://btisocco-mp-commerce-php.herokuapp.com/pending.php"
+    "success" => "https://btisocco-mp-commerce-php.herokuapp.com/success",
+    "failure" => "https://btisocco-mp-commerce-php.herokuapp.com/failure",
+    "pending" => "https://btisocco-mp-commerce-php.herokuapp.com/pending"
 );
 
 $preference->auto_return = "all";
