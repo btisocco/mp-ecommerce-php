@@ -11,13 +11,13 @@ $preference = new MercadoPago\Preference();
 //payment_methods
 $preference->payment_methods = array(
     "excluded_payment_methods" => array(
-      array("id" => "amex")
+        array("id" => "amex")
     ),
     "excluded_payment_types" => array(
-      array("id" => "atm")
+        array("id" => "atm")
     ),
     "installments" => 6
-  );
+);
 
 //backs_url
 $preference->back_urls = array(
@@ -26,7 +26,7 @@ $preference->back_urls = array(
     "pending" => "https://btisocco-mp-commerce-php.herokuapp.com/pending.php"
 );
 
-$preference->auto_return = "approved";
+$preference->auto_return = "all";
 
 // Crea un ítem en la preferencia
 $item = new MercadoPago\Item();
