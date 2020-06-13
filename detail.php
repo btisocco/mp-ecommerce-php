@@ -12,7 +12,7 @@ $preference_data = array(
     "back_urls"=> array (
         "success"=> 'https://btisocco-mp-commerce-php.herokuapp.com/success',
         "failure"=> 'https://btisocco-mp-commerce-php.herokuapp.com/failure',
-        "pending"=> 'https://btisocco-mp-commerce-php.herokuapp.com/pending',
+        "pending"=> 'https://btisocco-mp-commerce-php.herokuapp.com/pending'
     ),						
     "items" => array(
             array(
