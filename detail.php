@@ -11,11 +11,11 @@ MercadoPago\SDK::setIntegratorId("dev_24c65fb163bf11ea96500242ac130004");
 $preference = new MercadoPago\Preference();
 
 //payment_methods
-// $payment_methods = new MercadoPago\Payment_methods();
-// $payment_methods->excluded_payment_methods = array("id"=>"amex");
-// $payment_methods->excluded_payment_types = array("id"=>"atm");
-// $payment_methods->installments=6;
-// $preference->payment_methods = $payment_methods;
+$payment_methods = new MercadoPago\Payment_methods();
+$payment_methods->excluded_payment_methods = array("id"=>"amex");
+$payment_methods->excluded_payment_types = array("id"=>"atm");
+$payment_methods->installments=6;
+$preference->payment_methods = $payment_methods;
 
 //backs_url
 $preference->back_urls = array(
