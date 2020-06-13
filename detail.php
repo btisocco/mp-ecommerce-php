@@ -8,13 +8,6 @@ MercadoPago\SDK::setIntegratorId("dev_24c65fb163bf11ea96500242ac130004");
 // Crea un objeto de preferencia
 $preference = new MercadoPago\Preference();
 
-//payment_methods
-// $payment_methods = new MercadoPago\Payment_methods();
-// $payment_methods->excluded_payment_methods = array("id"=>"amex");
-// $payment_methods->excluded_payment_types = array("id"=>"atm");
-// $payment_methods->installments=6;
-// $preference->payment_methods = $payment_methods;
-
 //backs_url
 // $preference->back_urls = array(
 //     "success" => "https://btisocco-mp-commerce-php.herokuapp.com/success.php",
@@ -28,6 +21,14 @@ $item->title = 'Mi producto';
 $item->quantity = 1;
 $item->unit_price = 75.56;
 $preference->items = array($item);
+
+//payment_methods
+$payment_methods = new MercadoPago\Payment_methods();
+$payment_methods->excluded_payment_methods = array("id"=>"amex");
+$payment_methods->excluded_payment_types = array("id"=>"atm");
+$payment_methods->installments=6;
+$preference->payment_methods = $payment_methods;
+
 $preference->save();
 
 //fin PHP
