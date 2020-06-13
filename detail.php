@@ -1,35 +1,49 @@
 <?php
 
-require_once 'vendor/autoload.php'; // You have to require the library from your Composer vendor folder
+// require_once 'vendor/autoload.php'; // You have to require the library from your Composer vendor folder
 
-// require '/app/vendor/autoload.php';
+require 'vendor/autoload.php';
 
 MercadoPago\SDK::setAccessToken("APP_USR-6317427424180639-042414-47e969706991d3a442922b0702a0da44-469485398"); // Either Production or SandBox AccessToken
 MercadoPago\SDK::setIntegratorId("dev_24c65fb163bf11ea96500242ac130004");
 
-$preference_data = new MercadoPago\Preference();
+// Crea un objeto de preferencia
+$preference = new MercadoPago\Preference();
 
-$preference_data = array(
-    "external_reference" => 'btisocco@gmail.com',
-    "back_urls"=> array (
-        "success"=> 'http://www.midominio.com/transaccion_exitosa',
-        "failure"=> 'http://www.midominio.com/transaccion_erronea'
-    ),						
-    "items" => array(
-            array(
-            "title" =>'Producto1',
-            "quantity" => 1,
-            "currency_id" => "ARS",
-            "unit_price" => "15000" 
-        )
-        ),
-    "payment_methods" => array( /*aqui excluyo tipos de pago rapipago, transf bancaria, atm*/
-            "excluded_payment_types" => array( array( "id"=>"ticket"), array("id"=>"bank_transfer"), array("id"=>"atm")	)		
-                                        
-        )
+//payment_methods
+// $payment_methods = new MercadoPago\Payment_methods();
+// $payment_methods->excluded_payment_methods = array("id"=>"amex");
+// $payment_methods->excluded_payment_types = array("id"=>"atm");
+// $payment_methods->installments=6;
+// $preference->payment_methods = $payment_methods;
+
+$preference->payment_methods = array(
+    "excluded_payment_methods" => array(
+      array("id" => "amex")
+    ),
+    "excluded_payment_types" => array(
+      array("id" => "atm")
+    ),
+    "installments" => 6
+  );
+
+//backs_url
+$preference->back_urls = array(
+    "success" => "https://btisocco-mp-commerce-php.herokuapp.com/success.php",
+    "failure" => "https://btisocco-mp-commerce-php.herokuapp.com/failure.php",
+    "pending" => "https://btisocco-mp-commerce-php.herokuapp.com/pending.php"
 );
 
-$preference_data->save();
+$preference->auto_return = "approved";
+
+// Crea un ítem en la preferencia
+$item = new MercadoPago\Item();
+$item->title = 'Mi producto';
+$item->quantity = 1;
+$item->unit_price = 75.56;
+$preference->items = array($item);
+
+$preference->save();
 
 //fin PHP
 ?>
