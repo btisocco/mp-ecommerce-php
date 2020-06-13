@@ -17,6 +17,16 @@ $preference = new MercadoPago\Preference();
 // $payment_methods->installments=6;
 // $preference->payment_methods = $payment_methods;
 
+$preference->payment_methods = array(
+    "excluded_payment_methods" => array(
+      array("id" => "amex")
+    ),
+    "excluded_payment_types" => array(
+      array("id" => "atm")
+    ),
+    "installments" => 6
+  );
+
 //backs_url
 $preference->back_urls = array(
     "success" => "https://btisocco-mp-commerce-php.herokuapp.com/success.php",
