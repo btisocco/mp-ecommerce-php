@@ -8,7 +8,7 @@ MercadoPago\SDK::setIntegratorId("dev_24c65fb163bf11ea96500242ac130004");
 // Crea un objeto de preferencia
 $preference = new MercadoPago\Preference();
 
-//payment_methods
+// Excluyo amex y atm
 $preference->payment_methods = array(
     "excluded_payment_methods" => array(
         array("id" => "amex")
@@ -19,21 +19,42 @@ $preference->payment_methods = array(
     "installments" => 6
 );
 
-//backs_url
+// seteo back urls y autoreturn para cualquier status
+$preference->auto_return = "all"; //Redirige automáticamente a tu sitio cuando el pago finaliza como aprobado. Los valores posibles son approved y all.
 $preference->back_urls = array(
-    "success" => "https://btisocco-mp-commerce-php.herokuapp.com/success",
-    "failure" => "https://btisocco-mp-commerce-php.herokuapp.com/failure",
-    "pending" => "https://btisocco-mp-commerce-php.herokuapp.com/pending"
+    "success" => "https://btisocco-mp-commerce-php.herokuapp.com/success.php",
+    "failure" => "https://btisocco-mp-commerce-php.herokuapp.com/failure.php",
+    "pending" => "https://btisocco-mp-commerce-php.herokuapp.com/pending.php"
 );
-
-$preference->auto_return = "all";
 
 // Crea un ítem en la preferencia
 $item = new MercadoPago\Item();
-$item->title = 'Mi producto';
-$item->quantity = 1;
-$item->unit_price = 75.56;
-$preference->items = array($item);
+$item->title = $_POST['title'];
+$item->quantity = $_POST['price'];
+$item->unit_price = $_POST['price'];
+$preference->items = array($item);// guardo el item
+
+// seteo url de notificaciones con DB donde recibimos el json
+$preference->notification_url="https://sanitarioslitoral.com.ar/api/notifications2.php";
+
+// seteo referencia externa con nuestro correo
+$preference->external_reference = "btisocco@gmail.com";
+
+// defino datos del Payer
+$payer = new MercadoPago\Payer();
+$payer->name = "Lalo";
+$payer->surname = "Landa";
+$payer->email = "test_user_63274575@testuser.com";
+$payer->phone = array(
+"area_code" => "11",
+"number" => "22223333"
+);
+
+$payer->address = array(
+"street_name" => "False",
+"street_number" => 123,
+"zip_code" => "1111"
+);
 
 $preference->save();
 
@@ -171,12 +192,7 @@ $preference->save();
                                             <?php echo "$" . $_POST['unit'] ?>
                                         </h3>
                                     </div>
-                                    <form action="/procesar-pago.php" method="POST">
-                                        <script
-                                        src="https://www.mercadopago.com.ar/integrations/v1/web-payment-checkout.js"
-                                        data-preference-id="<?php echo $preference->id; ?>">
-                                        </script>
-                                    </form>
+                                    <a href="<?php echo $preference->init_point; ?>" class="mercadopago-button">Pagar la Compra</a>
                                 </div>
                             </div>
                         </div>
