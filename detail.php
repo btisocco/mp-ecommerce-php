@@ -112,7 +112,7 @@ $preference->save();
 
 <body class="as-theme-light-heroimage">
 
-<?php echo $_POST['img'];?>
+<p>url: <?php echo $_POST['img'] ?></p>
 
     <div class="stack">
         
