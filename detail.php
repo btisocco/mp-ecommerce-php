@@ -112,8 +112,6 @@ $preference->save();
 
 <body class="as-theme-light-heroimage">
 
-<p>url: <?php echo $_POST['img'] ?></p>
-
     <div class="stack">
         
         <div class="as-search-wrapper" role="main">
@@ -150,6 +148,7 @@ $preference->save();
                                         <h2 class=" as-filter-button-text">
                                             Smartphones
                                         </h2>
+                                        <p>url: <?php echo $_POST['img'] ?></p>
                                     </button>
 
 
