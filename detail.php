@@ -31,7 +31,7 @@ $preference->back_urls = array(
 $item = new MercadoPago\Item();
 $item->title = 'Motorola S6 Plus';
 $item->quantity = 1;
-$item->unit_price = 50000;
+$item->unit_price = $_POST['price'];
 $preference->items = array($item);// guardo el item
 
 // seteo url de notificaciones con DB donde recibimos el json
