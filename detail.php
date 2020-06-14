@@ -100,7 +100,7 @@ $preference->save();
         }
         .mercadopago-button { 
             text-decoration: none !important;
-            padding: 20px !important;
+            padding: 1,7em !important;
         } 
 
     </style>
