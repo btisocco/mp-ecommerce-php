@@ -29,8 +29,8 @@ $preference->back_urls = array(
 
 // Crea un ítem en la preferencia
 $item = new MercadoPago\Item();
-$item->title = 'Motorola S6 Plus';
-$item->quantity = 1;
+$item->title = $_POST['title'];
+$item->quantity = $_POST['unit'];
 $item->unit_price = $_POST['price'];
 $preference->items = array($item);// guardo el item
 
@@ -186,10 +186,10 @@ $preference->save();
                                             </h3>
                                         </div>
                                         <h3 >
-                                            <?php echo $_POST['price'] ?>
+                                            <?php echo $_POST['unit'] ?>
                                         </h3>
                                         <h3 >
-                                            <?php echo "$" . $_POST['unit'] ?>
+                                            <?php echo "$" . $_POST['price'] ?>
                                         </h3>
                                     </div>
                                     <a href="<?php echo $preference->init_point; ?>" class="mercadopago-button">Pagar la Compra</a>
