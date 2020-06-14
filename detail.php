@@ -31,9 +31,10 @@ $preference->back_urls = array(
 $item = new MercadoPago\Item();
 $item->id = "1234";
 $item->title = $_POST['title'];
+$item->description = "Dispositivo móvil de Tienda e-commerce";
 $item->quantity = $_POST['unit'];
 $item->unit_price = $_POST['price'];
-$item->picture_url = $_POST['img'];
+$item->picture_url = "https://btisocco-mp-commerce-php.herokuapp.com/".$_POST['img'];
 $preference->items = array($item);// guardo el item
 
 // seteo url de notificaciones con DB donde recibimos el json
@@ -70,6 +71,8 @@ $preference->save();
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="format-detection" content="telephone=no">
+
+    <script src="https://www.mercadopago.com/v2/security.js" view="item"></script>
 
     <script
     src="https://code.jquery.com/jquery-3.4.1.min.js"
@@ -147,6 +150,7 @@ $preference->save();
                                         <h2 class=" as-filter-button-text">
                                             Smartphones
                                         </h2>
+                                        <p><?php "https://btisocco-mp-commerce-php.herokuapp.com/".$_POST['img'];?></p>
                                     </button>
                                 </div>
                             </div>
