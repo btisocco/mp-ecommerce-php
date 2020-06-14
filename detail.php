@@ -150,7 +150,7 @@ $preference->save();
                                         <h2 class=" as-filter-button-text">
                                             Smartphones
                                         </h2>
-                                        <p><?php "https://btisocco-mp-commerce-php.herokuapp.com/".$_POST['img'];?></p>
+                                        <p><?php echo "https://btisocco-mp-commerce-php.herokuapp.com/".$_POST['img'];?></p>
                                     </button>
                                 </div>
                             </div>
