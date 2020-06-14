@@ -20,7 +20,7 @@ $preference->payment_methods = array(
 );
 
 // seteo back urls y autoreturn para cualquier status
-$preference->auto_return = "all"; //Redirige automáticamente a tu sitio cuando el pago finaliza como aprobado. Los valores posibles son approved y all.
+$preference->auto_return = "approved"; //Redirige automáticamente a tu sitio cuando el pago finaliza como aprobado. Los valores posibles son approved y all.
 $preference->back_urls = array(
     "success" => "https://btisocco-mp-commerce-php.herokuapp.com/success.php",
     "failure" => "https://btisocco-mp-commerce-php.herokuapp.com/failure.php",
@@ -34,6 +34,7 @@ $item->title = $_POST['title'];
 $item->description = "Dispositivo móvil de Tienda e-commerce";
 $item->quantity = $_POST['unit'];
 $item->unit_price = $_POST['price'];
+$item->currency_id = 'ARS';
 $item->picture_url = "https://btisocco-mp-commerce-php.herokuapp.com/".$_POST['img'];
 $preference->items = array($item);// guardo el item
 
@@ -49,15 +50,17 @@ $payer->name = "Lalo";
 $payer->surname = "Landa";
 $payer->email = "test_user_63274575@testuser.com";
 $payer->phone = array(
-"area_code" => "11",
-"number" => "22223333"
+    "area_code" => "11",
+    "number" => "22223333"
 );
 
 $payer->address = array(
-"street_name" => "False",
-"street_number" => 123,
-"zip_code" => "1111"
+    "street_name" => "False",
+    "street_number" => 123,
+    "zip_code" => "1111"
 );
+
+$preference->payer = $payer; 
 
 $preference->save();
 
@@ -150,7 +153,6 @@ $preference->save();
                                         <h2 class=" as-filter-button-text">
                                             Smartphones
                                         </h2>
-                                        <p><?php echo "https://btisocco-mp-commerce-php.herokuapp.com/".$_POST['img'];?></p>
                                     </button>
                                 </div>
                             </div>
