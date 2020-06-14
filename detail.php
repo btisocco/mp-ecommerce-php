@@ -29,9 +29,11 @@ $preference->back_urls = array(
 
 // Crea un ítem en la preferencia
 $item = new MercadoPago\Item();
+$item->id = "1234";
 $item->title = $_POST['title'];
 $item->quantity = $_POST['unit'];
 $item->unit_price = $_POST['price'];
+$item->picture_url = $_POST['img'];
 $preference->items = array($item);// guardo el item
 
 // seteo url de notificaciones con DB donde recibimos el json
